@@ -1,0 +1,12 @@
+sequelize model:create --name user --attributes firstName:string,lastName:string,age:integer,email:string
+
+// foreign key must be modelNameId:integer
+sequelize model:create --name pet --attributes name:string,description:text,userId:integer
+
+// M:M 
+
+sequelize model:create --name toy --attributes type:string, color:string
+
+// join table for M:M 
+
+sequelize model:create --name pets_toys --attributes petId:integer,toyId:integer
