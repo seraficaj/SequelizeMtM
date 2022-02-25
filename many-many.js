@@ -41,13 +41,24 @@ async function manyCrud() {
         // console.log(firstPetToys())
 
         // Eager Loading
-        const petsAndToys = await db.pet.findAll({
-            include: [db.toy]
-        })
-        petsAndToys.forEach(pet => {
-            console.log(pet.toys);
-        });
+        // const petsAndToys = await db.pet.findAll({
+        //     include: [db.toy]
+        // })
+        // petsAndToys.forEach(pet => {
+        //     console.log(pet.toys);
+        // });
 
+        // two includes
+        const foundUser = await db.user.findOne({
+            where: {
+                id: 1
+            },
+            include: {
+                model: db.pet,
+                include: [db.toy]
+            }
+        })
+        console.log(foundUser);
     } catch (err) {
         console.log(err);
     }
